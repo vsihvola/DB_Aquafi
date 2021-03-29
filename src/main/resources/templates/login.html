@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Aquafi - Login</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../../css/styles.css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div class="navbar">
+		<div class="wrapper">
+			<div class="navbarBean">
+				<a class="navbarLink" th:href="@{/}">Home</a>
+			</div>
+			<div class="navbarBean" sec:authorize="isAuthenticated()">
+				<a class="navbarLink" th:href="@{/games}">Configure games</a>
+			</div>
+			<div class="navbarBean" style="width: 70%"></div>
+			<div class="navbarBean">
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" method="post" class="signForm">
+						<input class="navbarLink" type="submit" value="Sign Out"
+							style="border: 0px; background-color: transparent;" />
+					</form>
+				</div>
+				<div sec:authorize="isAnonymous()">
+					<form th:action="@{/login}" method="post" class="signForm">
+						<a th:href="@{/login}" class="navbarLink">Sign In</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="login">
+			<div class="container" style="width: 50%">
+				<div class="Form" th:if="${param.error}">Invalid username or password.</div>
+				<form th:action="@{/login}" method="post">
+					<div class="Form">
+						<label> User Name : <input type="text" name="username" />
+						</label>
+					</div>
+					<div class="Form">
+						<label> Password: <input type="password" name="password" />
+						</label>
+					</div>
+					<div class="Form">
+						<input type="submit" value="Sign In" />
+					</div>
+				</form>
+				<div class="Form" th:if="${param.logout}">You have been logged out.</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

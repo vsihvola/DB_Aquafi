@@ -1,0 +1,53 @@
+<! DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Aquafi Esports</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../../css/styles.css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+	<div class="navbar">
+		<div class="wrapper">
+			<div class="navbarBean">
+				<a class="navbarLink" th:href="@{/}">Home</a>
+			</div>
+			<div class="navbarBean" sec:authorize="isAuthenticated()">
+				<a class="navbarLink" th:href="@{/games}">Configure games</a>
+			</div>
+			<div class="navbarBean" style="width: 70%"></div>
+			<div class="navbarBean">
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" method="post" class="signForm">
+						<input class="navbarLink" type="submit" value="Sign Out"
+							style="border: 0px; background-color: transparent;" />
+					</form>
+				</div>
+				<div sec:authorize="isAnonymous()">
+					<form th:action="@{/login}" method="post" class="signForm">
+						<a th:href="@{/login}" class="navbarLink">Sign In</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<h1>Games</h1>
+		<table>
+			<tr>
+				<th>Team One</th>
+				<th>Team Second</th>
+				<th>Map</th>
+				<th>Result</th>
+			</tr>
+			<tr th:each="game : ${games}">
+				<td th:text="${game.team1}"></td>
+				<td th:text="${game.team2}"></td>
+				<td th:text="${game.result}"></td>
+				<td th:text="${game.map}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
