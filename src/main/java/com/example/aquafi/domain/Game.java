@@ -1,5 +1,6 @@
 package com.example.aquafi.domain;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -9,8 +10,13 @@ public class Game {
 	@NotNull
 	private long id;
 	
+	@NotBlank(message = "Team name is mandatory")
 	private String team1;
+	
+	@NotBlank(message = "Team name is mandatory")
 	private String team2;
+	
+	@NotBlank(message = "Map is mandatory")
 	private String map;
 	
 	@Size(min=4, max=5)

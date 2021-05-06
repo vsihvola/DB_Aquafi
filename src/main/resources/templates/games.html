@@ -5,6 +5,7 @@
 <title>Aquafi - Games</title>
 <link rel="stylesheet" type="text/css" media="all"
 	href="../../../css/styles.css" th:href="@{/css/styles.css}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="navbar">
@@ -51,15 +52,16 @@
 					method="post">
 					<div class="Form">
 						<label for="team1">First team</label>
-						<input type="text" id="team1" th:field="*{team1}" />
+						<input type="text" id="team1" th:field="*{team1}" required/>
 					</div>
 					<div class="Form">
-						<label for="team2">Second team</label> <input type="text"
-							id="team2" th:field="*{team2}" />
+						<label for="team2">Second team</label>
+						<input type="text" id="team2" th:field="*{team2}" required/>
 					</div>
 					<div style="clear: both; display: block; height: 10px;"></div>
 					<div class="Form">
-						<label for="map">Map</label> <select th:field="*{map}">
+						<label for="map">Map</label>
+						<select th:field="*{map}" required>
 							<option th:value="de_dust2" th:text="de_dust2"></option>
 							<option th:value="de_mirage" th:text="de_mirage"></option>
 							<option th:value="de_vertigo" th:text="de_vertigo"></option>
@@ -71,12 +73,12 @@
 					</div>
 					<div style="clear: both; display: block; height: 10px;"></div>
 					<div class="Form">
-						<label for="result">Result</label> <input type="text" id="result"
-							th:field="*{result}" />
+						<label for="result">Result</label>
+						<input type="text" id="result" th:field="*{result}" required/>
 					</div>
 					<div class="Form">
 						<input type="submit" value="Add"></input>
-					</div>
+					</div>		
 				</form>
 			</div>
 		</div>
