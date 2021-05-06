@@ -21,11 +21,13 @@ public class GameDAOImpl implements GameDAO {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	//TBD More complex datatables
+	
 	public List<Game> fetchAllGames() {
 
-		String sql = "SELECT * FROM Game";
+		String dataToGet = "SELECT * FROM Game";
 		RowMapper<Game> mapper = new GameRowMapper();
-		List<Game> games = jdbcTemplate.query(sql, mapper);
+		List<Game> games = jdbcTemplate.query(dataToGet, mapper);
 
 		return games;
 	}

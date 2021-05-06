@@ -16,6 +16,9 @@
 			<div class="navbarBean" sec:authorize="isAuthenticated()">
 				<a class="navbarLink" th:href="@{/games}">Configure games</a>
 			</div>
+			<div class="navbarBean" sec:authorize="isAuthenticated()">
+				<a class="navbarLink" th:href="@{/rest}">Rest</a>
+			</div>
 			<div class="navbarBean" style="width: 70%"></div>
 			<div class="navbarBean">
 				<div sec:authorize="isAuthenticated()">
@@ -38,8 +41,8 @@
 			<tr>
 				<th>Team One</th>
 				<th>Team Second</th>
-				<th>Map</th>
 				<th>Result</th>
+				<th>Map</th>
 			</tr>
 			<tr th:each="game : ${games}">
 				<td th:text="${game.team1}"></td>
